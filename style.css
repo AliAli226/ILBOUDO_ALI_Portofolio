@@ -1,110 +1,3 @@
-
-/* --- Section Profil & Avatar --- */
-.profile-section {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Le double cercle (bordure dorée fine + cercle violet/bleu) */
-.avatar-container {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-gold); /* Cercle extérieur doré */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 20px auto;
-    padding: 5px; /* Espace entre le cercle doré et la photo */
-}
-
-.avatar-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: #534bae; /* Couleur de fond si l'image est transparente */
-}
-
-.name {
-    font-size: 22px;
-    color: white;
-    margin-bottom: 5px;
-}
-
-.title {
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: var(--accent-gold); /* Titre en doré comme sur l'image */
-    font-weight: 300;
-}
-
-/* --- Séparateur --- */
-.separator {
-    width: 50px;
-    border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 20px auto;
-}
-
-/* --- Menu Stylisé --- */
-.menu {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.menu-item {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    margin-bottom: 8px;
-    color: #a0a0a0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 12px; /* Coins arrondis pour l'élément actif */
-}
-
-/* Style de l'élément actif (Présentation) */
-.menu-item.active {
-    background-color: rgba(255, 255, 255, 0.08); /* Fond sombre bleuté */
-    color: white;
-}
-
-/* Le petit point doré */
-.dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--accent-gold);
-    border-radius: 50%;
-    margin-right: 15px;
-    opacity: 0.6;
-}
-
-.menu-item.active .dot {
-    opacity: 1;
-    box-shadow: 0 0 8px var(--accent-gold);
-}
-
-.menu-item:hover {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.contact-item .icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
 :root {
     --bg-dark: #161625;
     --sidebar-bg: #161625;
@@ -116,6 +9,7 @@
     --status-green: #4caf50;
 }
 
+/* RESET UNIVERSEL */
 * {
     margin: 0;
     padding: 0;
@@ -140,17 +34,22 @@ body {
     min-height: 100vh;
 }
 
+/* CONTENEUR PRINCIPAL FLUIDE */
 .container {
     display: flex;
     flex: 1;
     justify-content: center;
+    width: 100%;
+    max-width: 1600px; /* Évite qu'il ne s'étale trop sur les écrans 4K */
+    margin: 0 auto;
 }
 
-/* Sidebar gauche */
+/* --- Sidebar gauche --- */
 .sidebar {
     width: 300px;
+    min-width: 280px;
     background-color: var(--sidebar-bg);
-    padding: 40px 20px;
+    padding: clamp(20px, 4vw, 40px) 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,11 +57,12 @@ body {
     border-radius: 0 20px 20px 0;
 }
 
-/* Sidebar droite */
+/* --- Sidebar droite --- */
 .sidebar-right {
     width: 300px;
+    min-width: 280px;
     background-color: var(--sidebar-bg);
-    padding: 40px 20px;
+    padding: clamp(20px, 4vw, 40px) 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -170,10 +70,34 @@ body {
     border-radius: 20px 0 0 20px;
 }
 
-.avatar {
-    width: 100px;
-    height: 100px;
+/* --- Section Profil & Avatar --- */
+.profile-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar-container {
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    padding: 5px;
+}
+
+.avatar-img, .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #534bae;
+}
+
+.avatar {
     border: 3px solid var(--accent-gold);
     display: flex;
     justify-content: center;
@@ -181,23 +105,90 @@ body {
     font-size: 2rem;
     font-weight: bold;
     color: var(--accent-gold);
-    margin-bottom: 20px;
 }
 
 .name {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 5px;
     text-align: center;
 }
 
 .title {
-    color: var(--text-gray);
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    font-weight: 300;
     margin-bottom: 40px;
+    text-align: center;
 }
 
-/* Main */
+/* --- Séparateur --- */
+.separator {
+    width: 50px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px auto;
+}
+
+/* --- Menu Stylisé --- */
+.menu {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 8px;
+    color: #a0a0a0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.menu-item.active {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    margin-right: 15px;
+    opacity: 0.6;
+}
+
+.menu-item.active .dot {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--accent-gold);
+}
+
+.menu-item:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact-item .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* --- Main --- */
 .main-content {
     flex: 1;
     background-color: #f0f0f0;
-    padding: 50px;
+    padding: clamp(20px, 4vw, 50px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,21 +202,21 @@ h1, h2, .section-title {
     font-weight: bold;
 }
 
-/* 🔥 Texte normal NON GRAS */
 p, li, span, a {
     font-size: 15px;
     font-weight: normal;
 }
 
-/* CV */
+/* CV Container fluide */
 .cv-container {
     background-color: #ffffff;
     width: 100%;
     max-width: 800px;
-    padding: 60px;
+    padding: clamp(25px, 5vw, 60px);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     color: #333;
     margin-bottom: 40px;
+    border-radius: 8px;
 }
 
 .cv-container section {
@@ -244,14 +235,13 @@ p, li, span, a {
     text-align: justify;
     position: relative;
     padding-left: 12px;
-    font-weight: normal; /* 🔥 enlève le gras partout */
+    font-weight: normal;
 }
 
-/* 🔽 Puces PLUS PETITES */
 .main-list li::before {
     content: "";
-    width: 3px;   /* ✅ réduit */
-    height: 3px;  /* ✅ réduit */
+    width: 3px;
+    height: 3px;
     background-color: black;
     border-radius: 50%;
     position: absolute;
@@ -259,10 +249,9 @@ p, li, span, a {
     top: 9px;
 }
 
-/* ✅ ANNÉES EN GRAS + SANS PUCE */
 .main-list li:has(ul) {
     padding-left: 0;
-    font-weight: bold; /* 🔥 uniquement les années */
+    font-weight: bold;
 }
 
 .main-list li:has(ul)::before {
@@ -279,19 +268,19 @@ p, li, span, a {
 }
 
 .signature-location {
-    margin-bottom: 40px; /* ✅ espace pour l'image */
+    margin-bottom: 40px;
 }
 
 .signature-img {
     width: 150px;
-    margin-bottom: 20px; /* ✅ espace entre signature et nom */
+    margin-bottom: 20px;
 }
 
 .signature-name {
     font-weight: bold;
 }
 
-/* ✅ Footer */
+/* --- Footer --- */
 .footer {
     background-color: var(--bg-dark);
     color: var(--text-white);
@@ -312,6 +301,7 @@ p, li, span, a {
     display: flex;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .social-links a {
@@ -337,11 +327,14 @@ p, li, span, a {
     height: 20px;
 }
 
-/* Responsive */
+/* --- Responsive (Mobile / Tablettes) --- */
 @media (max-width: 900px) {
-    .container { flex-direction: column; }
+    .container { 
+        flex-direction: column; 
+    }
     .sidebar, .sidebar-right {
         width: 100%;
+        min-width: 100%;
         border-radius: 0;
         border: none;
     }
@@ -350,14 +343,3 @@ p, li, span, a {
         gap: 10px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
